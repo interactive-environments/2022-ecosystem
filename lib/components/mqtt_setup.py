@@ -35,8 +35,9 @@ class MQTT():
         self.mqtt_client.connect()
 
     def message(self, client, topic, message):
-        if client.client_id != self.client_id:
-            self.creature.message(message)
+        sender_id = message.split("$$$")[0]
+        if sender_id != self.client_id:
+            self.creature.message(message.split("$$$")[1])
 
     ### MQTT connection functions ###
     def connected(self, client, userdata, flags, rc):
