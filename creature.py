@@ -23,13 +23,18 @@ class Creature:
         if msg == "ping":
             # Change led color to Green
             color = (0, 1, 0)
-            buzzer.update(100)
+            buzzer.update(0)
 
         # Send the ping message when we recive pong
         if msg == "pong":
             # Change led color ot Red
             color = (1, 0, 0)
+            buzzer.update(0)
             self.ecosystem.send_message("ping")
+
+        if msg == "pow":
+            color = (0, 0, 0)
+            buzzer.update(10)
 
     def sense(self):
         if button.sense() == True:
