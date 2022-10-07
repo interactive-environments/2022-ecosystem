@@ -22,7 +22,7 @@ class EcoSystem:
     def send_message(self, message):
         print("sending: " + message)
         if self.connect_to_ecosystem:
-            self.mqtt.send(message)
+            self.mqtt.send(self.mqtt.client_id + "$$$" + message)
 
     # Checks if there is a message from the eco system
     def check_for_messages(self):
