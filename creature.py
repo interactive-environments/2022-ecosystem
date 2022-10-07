@@ -1,6 +1,7 @@
 from components.button import Button
 from components.buzzer import Buzzer
 from components.led import LED
+import random
 
 button = Button()
 buzzer = Buzzer()
@@ -30,7 +31,9 @@ class Creature:
             # Change led color ot Red
             color = (1, 0, 0)
             buzzer.update(0)
-            self.ecosystem.send_message("ping")
+            # There is a 25% change that we will repley with ping
+            if random.randint(0,3) == 3:
+                self.ecosystem.send_message("ping")
 
         if msg == "pow":
             color = (0, 0, 0)
