@@ -36,7 +36,7 @@ while True:
         send_timer.start()
         if creature.sense():
             ecosystem.send_message("ping") # COMMENT THIS LINE when using creature_example2.py
-            #message_select = creature.get_selected_message() #UN-COMMENT THIS LINE when using creature_example2.py
+            #message_select = creature.get_selected_message() #UN-COMMENT THIS LINE when using creature_example2.py and rename that file to "creature.py"
             ecosystem.send_message(message_select)
 
     # This will trigger the default behaviour that will play.
