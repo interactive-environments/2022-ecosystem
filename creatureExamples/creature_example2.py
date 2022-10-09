@@ -2,11 +2,12 @@ from components.button import Button
 from components.buzzer import Buzzer
 from components.led import LED
 from components.slider import Slider
+import board
 
 button = Button()
 buzzer = Buzzer()
 led = LED(1)
-slider = Slider()
+slider = Slider(port = board.A4)
 
 increase = True
 led_power = 255
