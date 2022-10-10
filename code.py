@@ -22,22 +22,10 @@ ecosystem = EcoSystem(ecosystem="blue_team", creature=creature, connect_to_ecosy
 # add the ecosystem to the creature
 creature.ecosystem = ecosystem
 
-# Make sure we do not send messages too often
-send_timer = Timer()
-send_timer.set_duration(1)  # suggestion: may not be smaller that 1 second
-
 while True:
     # This will check for new messages.
     # The behaviour for theses messages is in creature.py -> message()
     ecosystem.check_for_messages()
-
-    # Leave it to the teams to define when they send a ping
-    if send_timer.expired():
-        send_timer.start()
-        if creature.sense():
-            ecosystem.send_message("ping") # COMMENT THIS LINE when using creature_example2.py
-            #message_select = creature.get_selected_message() #UN-COMMENT THIS LINE when using creature_example2.py and rename that file to "creature.py"
-            ecosystem.send_message(message_select)
 
     # This will trigger the default behaviour that will play.
     # regardless if there is a message or not.

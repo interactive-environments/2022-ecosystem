@@ -13,7 +13,6 @@ increase = True
 led_power = 255
 color = (1, 0, 0)
 
-
 class Creature:
 
     def __init__(self):
@@ -57,6 +56,11 @@ class Creature:
     # One iteration of the creatures main loop
     def loop(self):
         global increase, led_power, color
+
+        # If the button in pressed then send the message based on the slider value
+        if self.sense():
+            message_select = self.get_selected_message()
+            self.ecosystem.send_message(message_select)
 
         # increase or decease the brightness by 1 every loop.
         if increase:
