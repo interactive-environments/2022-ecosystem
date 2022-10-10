@@ -18,10 +18,11 @@ send_timer.set_duration(1)
 count = 0
 count_to = 2
 
+# CREATURE: Observer
 # This creature will keep count of the messages.
 # Every time a new messages is send that is different from the previous the count will reset.
 # the pong count is blue.
-# the ping count is breen.
+# the ping count is green.
 # the pow count is red.
 # it will vibrate when the count reaches 255.
 class Creature:

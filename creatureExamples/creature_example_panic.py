@@ -15,6 +15,7 @@ next_message = ""
 send_timer = Timer()
 send_timer.set_duration(1)
 
+# CREATURE: Defensive
 # This creature will overtime randomly send messages.
 # once someone gets to close it will keep sending the "pow" message
 # on a ping message it will 75% of the times respond with pong and have blue slow pulsing light.
@@ -73,8 +74,18 @@ class Creature:
     def loop(self):
         global increase, led_power, color, pulse, send_timer, next_message
 
+        panic = False
+
+        # If we sense someone is there
+        if self.sense():
+            # Go into panic mode
+            pulse = False
+            color = (1,0,0)
+            self.ecosystem.send_message("pow")
+            panic = True
+
         # check if it is time to send somthing
-        if send_timer.expired():
+        if send_timer.expired() and not panic:
             # next message will be within 1 and 5 seconds
             send_timer.set_duration(random.randint(1,5))
             send_timer.start()
@@ -84,13 +95,6 @@ class Creature:
                 # clear the message
                 next_message = ""
 
-
-        # If we sense someone is there
-        if self.sense():
-            # Go into panic mode
-            pulse = False
-            color = (1,0,0)
-            self.ecosystem.send_message("pow")
 
 
         # increase or decease the brightness by 10 every loop.

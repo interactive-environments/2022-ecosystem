@@ -19,12 +19,12 @@ direction = "increase"
 servo_step = 0
 prev_button_value = False
 
+# CREATURE: Movement
 # This creature will simulate 3 states:
 # 1) neutral: shows white light and relaxed servo movement
 # 2) happy: shows green light and no servo movement
 # 3) angry: shows red light and fast servo movement
-# We send our messsages when we do a button press.
-# The message being sent is determineed by the position of the slider
+# If the button is pressed the creature will compleetly freeze
 
 class Creature:
 
@@ -58,18 +58,9 @@ class Creature:
     def loop(self):
         global increase, led_power, color, direction, servo_step, prev_button_value
 
-        # If the button in pressed then send the message based on the slider value
-        if self.sense() and not prev_button_value:
-            if(slider.sense() > 45000):
-                self.ecosystem.send_message("ping")
-            elif (slider.sense() > 23000):
-                self.ecosystem.send_message("pong")
-            else:
-                self.ecosystem.send_message("pow")
-            prev_button_value = True
-        elif not self.sense():
-            prev_button_value = False
-
+        # If the button is pressed it will freeze
+        if self.sense():
+            return
 
         # increase or decease the brightness by 1 every loop.
         if increase:
