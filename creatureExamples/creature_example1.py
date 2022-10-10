@@ -82,12 +82,14 @@ class Creature:
             if led_power < 0:
                 led_power = 0
                 increase = True
-
+                
+        # Determine whether we need to decrease or increase the servo angle        
         if direction == "increase":
             new_angle = servo.lastAngle + servo_step
         elif direction == "decrease":
             new_angle = servo.lastAngle - servo_step
-
+            
+        # update the servo angle
         if (new_angle < 0):
             new_angle = 0
             direction = "increase"
