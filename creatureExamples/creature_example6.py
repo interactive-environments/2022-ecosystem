@@ -14,6 +14,10 @@ led_is_on = False
 timer_mark = 0
 timer_duration = 0
 
+# This creature will have a flickering light.
+# The incoming messages have a color channel and a colorvalue. 
+# We adjust our led by changing the colorvalue of the appropriate colorchannel.
+# The rgb value being sent is determined by the position of the slider. The color channel we put in the message is randomly assigned.
 class Creature:
 
     def __init__(self):
