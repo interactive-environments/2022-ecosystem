@@ -19,7 +19,12 @@ direction = "increase"
 servo_step = 0
 prev_button_value = False
 
-
+# This creature will simulate 3 states:
+# 1) neutral: shows white light and relaxed servo movement
+# 2) happy: shows green light and no servo movement
+# 3) angry: shows red light and fast servo movement
+# We send our messsages when we do a button press.
+# The message being sent is determineed by the position of the slider
 
 class Creature:
 
