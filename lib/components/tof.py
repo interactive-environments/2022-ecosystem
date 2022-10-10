@@ -11,7 +11,7 @@ class Tof():
         self.vl53 = adafruit_vl53l0x.VL53L0X(self.i2c)
 
     def sense(self, distance):
-        return self.vl53.range < distance
+        return self.vl53.range < distance and self.vl53.range > 20
 
     def sense_range(self):
         return self.vl53.range
