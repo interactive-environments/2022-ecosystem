@@ -6,10 +6,7 @@ from analogio import AnalogOut
 import pwmio
 
 class Slider():
-    def __init__(self, port=None):
-        if port == None:
-            self.slider = AnalogIn(board.A2)
-        else:
+    def __init__(self, port=board.A2):
             self.slider = AnalogIn(port)
 
     def sense(self):

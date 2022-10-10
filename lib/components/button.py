@@ -6,8 +6,8 @@ import digitalio
 class Button():
     previous_button_value = False
 
-    def __init__(self):
-        self.button = digitalio.DigitalInOut(board.A2)
+    def __init__(self, port=board.A2):
+        self.button = digitalio.DigitalInOut(port)
         self.button.direction = digitalio.Direction.INPUT
 
     def sense(self):

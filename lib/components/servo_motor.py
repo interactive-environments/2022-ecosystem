@@ -5,8 +5,8 @@ import pwmio
 from adafruit_motor import servo
 
 class Servo():
-    def __init__(self):
-        self.pwm = pwmio.PWMOut(board.D4, frequency = 50)
+    def __init__(self, port=board.D4):
+        self.pwm = pwmio.PWMOut(port, frequency = 50)
         self.servo = servo.Servo(self.pwm)
         self.lastAngle = 0
 

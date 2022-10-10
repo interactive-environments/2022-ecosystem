@@ -2,8 +2,8 @@ import board
 import analogio
 
 class AnalogInput():
-    def __init__(self):
-        self.input = analogio.AnalogIn(board.A0)
+    def __init__(self, port=board.A0):
+        self.input = analogio.AnalogIn(port)
 
     def sense(self, threshold):
         return self.input.value > threshold
